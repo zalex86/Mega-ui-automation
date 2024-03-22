@@ -12,6 +12,7 @@ import work.mayflower.pages.plp.ProductListPage;
 public class PLPTests extends BaseSetup {
     @Test(description = "Проверить переход и отображение товаров в каталоге")
     public void openPLPTest() {
+        String productTitle = "Digma";
         new MainPage();
         HeaderElement headerElement = new HeaderElement();
         ProductListPage productListPage = headerElement.clickHamburger()
@@ -20,12 +21,12 @@ public class PLPTests extends BaseSetup {
                 .clickDigmaLink();
         SoftAssertions softAssertions = new SoftAssertions();
         softAssertions.assertThat(productListPage.name.shouldBe(Condition.visible)
-                .getText()).isEqualTo("Digma");
+                .getText()).isEqualTo(productTitle);
         softAssertions.assertThat(productListPage.foundItems).size().isEqualTo(1);
         softAssertions.assertAll();
         ItemCard itemCard = productListPage.getItemCard(1);
         itemCard.getItemCard().$(itemCard.itemNameWithLink).shouldBe(Condition.visible)
-                .shouldHave(Condition.text("Digma"))
+                .shouldHave(Condition.text(productTitle))
                 .parent().$(itemCard.addToCartButton).shouldBe(Condition.visible)
                 .shouldHave(Condition.text("В корзину"));
     }

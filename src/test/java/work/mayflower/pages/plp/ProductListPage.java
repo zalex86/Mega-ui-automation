@@ -10,13 +10,13 @@ import static com.codeborne.selenide.Selenide.$$;
 
 
 public class ProductListPage {
-     String page_url = BaseSetup.SERVER + "catalog/digma/";
+     String page_url = BaseSetup.SERVER + "catalog/";
 
      public final SelenideElement name = $("h1");
      public final ElementsCollection foundItems = $$("div[class$='rs-offers-preview']");
 
-     public ProductListPage() {
-          PageObjectUtils.waitPageIsPresentByURL(page_url);
+     public ProductListPage(String productTitle) {
+          PageObjectUtils.waitPageIsPresentByURL(page_url + productTitle.toLowerCase() +"/");
      }
 
      public ItemCard getItemCard(int itemNumber) {

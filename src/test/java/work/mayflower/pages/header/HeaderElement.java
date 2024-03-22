@@ -3,6 +3,7 @@ package work.mayflower.pages.header;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+import work.mayflower.BaseSetup;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -25,5 +26,15 @@ public class HeaderElement {
     public HeaderElement clickPersonalAccountButton() {
         personalAccountButton.click();
         return this;
+    }
+
+    public void authorizeOnSite() {
+        clickPersonalAccountButton()
+                .loginButton.click();
+        LoginHandle loginHandle = new LoginHandle();
+        loginHandle.emailInput.clear();
+        loginHandle.emailInput.sendKeys(BaseSetup.TESTER_EMAIL);
+        loginHandle.passwordInput.clear();
+        loginHandle.passwordInput.sendKeys(BaseSetup.TESTER_PASSWORD);
     }
 }

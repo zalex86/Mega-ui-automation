@@ -17,24 +17,28 @@ public class CartTests extends BaseSetup {
     //3. Проверка добавления товара в корзину и удаления из корзины (edited)
     @Test(description = "Проверка добавления товара в корзину и удаления из корзины")
     public void openPLPTest() {
-        open(SERVER + "catalog/digma/");
+        String productTitle = "Digma";
         new MainPage();
+        open(SERVER + "catalog/" + productTitle.toLowerCase() + "/");
         HeaderElement headerElement = new HeaderElement();
         headerElement.cartButton.click();
         CheckoutPage checkoutPage = new CheckoutPage();
         checkoutPage.cartTitle.shouldBe(Condition.visible).shouldHave(Condition.text("Корзина пуста"));
         checkoutPage.backButton.click();
 
-        ProductListPage productListPage = new ProductListPage();
+        ProductListPage productListPage = new ProductListPage(productTitle);
         productListPage.foundItems.shouldHave(CollectionCondition.sizeGreaterThanOrEqual(1));
 
         ItemCard itemCard = productListPage.getItemCard(1);
-        itemCard.getItemCard().$(itemCard.addToCartButton).$(itemCard.buttonLabel).shouldHave(Condition.text("В корзину"));
+        itemCard.getItemCard()
+                .$(itemCard.addToCartButton).shouldBe(Condition.visible)
+                .$(itemCard.buttonLabel).shouldHave(Condition.text("В корзину"));
         String itemName = itemCard.getItemName();
         String itemPrice = itemCard.getItemPrice();
         CartHandle cartHandle = itemCard.addItemToCart();
 
-        itemCard.getItemCard().$(itemCard.addToCartButton).$(itemCard.buttonLabel).shouldHave(Condition.text("Добавлено"));
+        itemCard.getItemCard().$(itemCard.addToCartButton)
+                .$(itemCard.buttonLabel).shouldHave(Condition.text("Добавлено"));
         cartHandle.cartHandleContent.shouldBe(Condition.visible)
                 .$(cartHandle.itemName).shouldBe(Condition.visible)
                 .shouldHave(Condition.text(itemName));
