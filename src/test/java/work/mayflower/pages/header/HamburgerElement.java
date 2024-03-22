@@ -1,7 +1,8 @@
-package work.mayflower.pages;
+package work.mayflower.pages.header;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import work.mayflower.pages.plp.ProductListPage;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -12,7 +13,7 @@ public class HamburgerElement {
 
     public final SelenideElement padsItems = $("#dropdown-subsubcat-2-2 ul");
 
-    public final SelenideElement digmaLink = $("a[href=\"/catalog/digma/\"]");
+    public final SelenideElement digmaLink = $("a[href='/catalog/digma/']");
 
     public HamburgerElement() {
         categoriesElement.shouldBe(Condition.visible);
