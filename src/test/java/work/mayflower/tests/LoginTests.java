@@ -4,6 +4,7 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import org.testng.annotations.Test;
 import work.mayflower.BaseSetup;
+import work.mayflower.pages.MainPage;
 import work.mayflower.pages.header.HeaderElement;
 import work.mayflower.pages.header.LoginHandle;
 
@@ -12,6 +13,7 @@ public class LoginTests extends BaseSetup {
 //    Реализовать 3 теста и придумать 1 свой
     @Test(description = "Проверка логина на сайт")
     public void loginTest() {
+        new MainPage();
         HeaderElement headerElement = new HeaderElement();
         headerElement.personalAccountButton.shouldBe(Condition.visible).$(headerElement.buttonLabel)
                 .shouldHave(Condition.text("Личный кабинет")).click();

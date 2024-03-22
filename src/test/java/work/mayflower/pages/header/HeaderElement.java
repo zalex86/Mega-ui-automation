@@ -15,6 +15,7 @@ public class HeaderElement {
     public final SelenideElement loginButton = $("a[href^=\"/auth\"]");
     public final SelenideElement personalAccountMenuHeader = $(".lk-dropdown__head");
     public final By accountName = By.cssSelector(".mb-3");
+    public final SelenideElement cartButton = $("#rs-cart");
 
     public HamburgerElement clickHamburger() {
         hamburgerButton.shouldBe(Condition.visible).click();
