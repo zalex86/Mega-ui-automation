@@ -23,7 +23,6 @@ public class BaseSetup {
     public static String TESTER_EMAIL;
     public static String TESTER_PASSWORD;
     public static String TESTER_NAME_AND_SURNAME;
-    public static String TESTER_SURNAME;
 
     @BeforeSuite
     public void setupServer() throws IOException {

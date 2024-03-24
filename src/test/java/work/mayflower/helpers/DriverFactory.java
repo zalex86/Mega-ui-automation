@@ -19,7 +19,6 @@ public final class DriverFactory {
 //        Configuration.remote = ParametersProvider.getProperty("seleniumUrl");
         Configuration.browser = System.getProperty("gridBrowserName");
         System.setProperty("webdriver.chrome.driver", "src/test/resources/configuration/chromedriver-win64/chromedriver.exe");
-                //"D:\\Users\\AleksanDR\\AquaProjects\\sobes\\pixellu\\chrome\\chromedriver-win64\\chromedriver.exe");
         Configuration.startMaximized = true;
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
