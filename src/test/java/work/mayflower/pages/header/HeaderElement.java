@@ -2,6 +2,7 @@ package work.mayflower.pages.header;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import work.mayflower.pages.OrdersListPage;
 
@@ -20,16 +21,19 @@ public class HeaderElement {
     public final By accountName = By.cssSelector(".mb-3");
     public final SelenideElement cartButton = $("#rs-cart");
 
+    @Step("Click Hamburger button")
     public HamburgerElement clickHamburger() {
         hamburgerButton.shouldBe(Condition.visible).click();
         return new HamburgerElement();
     }
 
+    @Step("Click the Personal Account button")
     public HeaderElement clickPersonalAccountButton() {
         personalAccountButton.click();
         return this;
     }
 
+    @Step("Login on site")
     public HeaderElement authorizeOnSite() {
         clickPersonalAccountButton()
                 .loginButton.click();
@@ -39,6 +43,7 @@ public class HeaderElement {
         return this;
     }
 
+    @Step("Go to the Orders list page")
     public OrdersListPage passToOrdersListPage() {
         clickPersonalAccountButton().dropdownMenu.$$(dropdownListItem).get(2).click();
         return new OrdersListPage();

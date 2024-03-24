@@ -2,6 +2,7 @@ package work.mayflower.tests;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 import work.mayflower.BaseSetup;
 import work.mayflower.pages.*;
@@ -10,6 +11,7 @@ import work.mayflower.pages.plp.ProductListPage;
 
 import static com.codeborne.selenide.Selenide.open;
 
+@Feature("Checkout")
 public class CheckoutTests extends BaseSetup {
     @Test(description = "Checkout with one product in cart by a logged in user")
     public void checkoutTest() {
@@ -21,19 +23,18 @@ public class CheckoutTests extends BaseSetup {
                 .getTheLastOrderNumber();
 
         open(SERVER + "catalog/" + productTitle.toLowerCase() + "/");
-        new ProductListPage(productTitle).getItemCard(1)
+        CheckoutPage checkoutPage = new ProductListPage(productTitle).getItemCard(1)
                 .addItemToCart()
                 .cartButtonClick();
 
-        CheckoutPage checkoutPage = new CheckoutPage();
         String checkoutSum = checkoutPage.totalSum.getText();
-        checkoutPage.submitWithoutNesescaryFields()
+        checkoutPage.submitWithoutNecessaryFields()
                 .getDeliveryValidationError().shouldBe(Condition.visible).shouldHave(Condition.text("Укажите тип доставки"));
         checkoutPage.toggleOnlineDelivery()
-                .submitWithoutNesescaryFields()
+                .submitWithoutNecessaryFields()
                 .getAddressValidationError().shouldBe(Condition.visible).shouldHave(Condition.text("Адрес - обязательное поле"));
         checkoutPage.chooseDeliveryAddess()
-                .submitWithoutNesescaryFields()
+                .submitWithoutNecessaryFields()
                 .getPaymentValidationError().shouldBe(Condition.visible).shouldHave(Condition.text("Укажите тип оплаты"));
         CheckoutFinishPage checkoutFinishPage = checkoutPage.toggleOnPaymentByCard()
                 .clickSubmitCheckoutButton();

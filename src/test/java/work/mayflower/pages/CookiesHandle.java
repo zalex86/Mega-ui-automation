@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-// page_url = https://mega.readyscript.ru/checkout/
 public class CookiesHandle {
     public final SelenideElement cookiesContent = $(".cookies-policy__inner");
     public final By acceptCookiesButton = By.cssSelector("button");

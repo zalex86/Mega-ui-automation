@@ -6,11 +6,11 @@
         <classes>
             <class name="work.mayflower.tests.LoginTests"/>
             <class name="work.mayflower.tests.PLPTests"/>
+            <class name="work.mayflower.tests.CartTests"/>
         </classes>
     </test>
     <test name="Cart and checkout tests">
         <classes>
-            <class name="work.mayflower.tests.CartTests"/>
             <class name="work.mayflower.tests.CheckoutTests"/>
         </classes>
     </test>

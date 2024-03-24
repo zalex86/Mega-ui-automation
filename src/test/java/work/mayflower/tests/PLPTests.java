@@ -2,6 +2,7 @@ package work.mayflower.tests;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 import work.mayflower.BaseSetup;
 import work.mayflower.pages.MainPage;
@@ -9,6 +10,7 @@ import work.mayflower.pages.header.HeaderElement;
 import work.mayflower.pages.plp.ItemCard;
 import work.mayflower.pages.plp.ProductListPage;
 
+@Feature("PLP")
 public class PLPTests extends BaseSetup {
     @Test(description = "Check passing to a product list page and a product card view")
     public void openPLPTest() {

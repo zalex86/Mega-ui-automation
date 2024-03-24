@@ -2,6 +2,7 @@ package work.mayflower.pages.plp;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import lombok.Getter;
 import org.openqa.selenium.By;
 
@@ -19,15 +20,18 @@ public class ItemCard {
         this.itemCard = itemCard;
     }
 
+    @Step("Add item into cart")
     public CartHandle addItemToCart() {
         itemCard.$(addToCartButton).shouldBe(Condition.visible).click();
         return new CartHandle();
     }
 
+    @Step("Get item's title")
     public String getItemName() {
         return itemCard.$(itemNameWithLink).getText();
     }
 
+    @Step("Get item's price")
     public String getItemPrice() {
         return itemCard.$(itemPrice).getText();
     }

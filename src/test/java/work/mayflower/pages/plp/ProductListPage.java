@@ -2,6 +2,7 @@ package work.mayflower.pages.plp;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import work.mayflower.BaseSetup;
 import work.mayflower.helpers.PageObjectUtils;
 
@@ -19,6 +20,7 @@ public class ProductListPage {
           PageObjectUtils.waitPageIsPresentByURL(page_url + productTitle.toLowerCase() +"/");
      }
 
+     @Step("Get an item card number: {0}")
      public ItemCard getItemCard(int itemNumber) {
           return new ItemCard(foundItems.get(itemNumber-1));
      }

@@ -2,15 +2,17 @@ package work.mayflower.tests;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 import work.mayflower.BaseSetup;
 import work.mayflower.pages.MainPage;
 import work.mayflower.pages.header.HeaderElement;
 import work.mayflower.pages.header.LoginHandle;
 
+@Feature("Authorization")
 public class LoginTests extends BaseSetup {
 
-    @Test(description = "Check log in process on site")
+    @Test(description = "Check log in on site process ")
     public void loginTest() {
         new MainPage();
         HeaderElement headerElement = new HeaderElement();

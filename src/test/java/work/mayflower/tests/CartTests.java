@@ -2,6 +2,7 @@ package work.mayflower.tests;
 
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 import work.mayflower.BaseSetup;
 import work.mayflower.pages.CheckoutPage;
@@ -13,6 +14,7 @@ import work.mayflower.pages.plp.ProductListPage;
 
 import static com.codeborne.selenide.Selenide.open;
 
+@Feature("Cart")
 public class CartTests extends BaseSetup {
 
     @Test(description = "Check adding and removing a product from the cart")
