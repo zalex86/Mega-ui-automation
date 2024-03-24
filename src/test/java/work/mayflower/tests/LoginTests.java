@@ -9,18 +9,20 @@ import work.mayflower.pages.header.HeaderElement;
 import work.mayflower.pages.header.LoginHandle;
 
 public class LoginTests extends BaseSetup {
-//    https://mega.readyscript.ru/
-//    Реализовать 3 теста и придумать 1 свой
-    @Test(description = "Проверка логина на сайт")
+
+    @Test(description = "Check log in process on site")
     public void loginTest() {
         new MainPage();
         HeaderElement headerElement = new HeaderElement();
-        headerElement.personalAccountButton.shouldBe(Condition.visible).$(headerElement.buttonLabel)
-                .shouldHave(Condition.text("Личный кабинет")).click();
+        headerElement.personalAccountButton.shouldBe(Condition.visible)
+                .$(headerElement.buttonLabel).shouldHave(Condition.text("Личный кабинет"))
+                .click();
+
         headerElement.dropdownMenu.shouldBe(Condition.visible)
                 .$$(headerElement.dropdownListItem).shouldHave(CollectionCondition.size(2));
         headerElement.personalAccountMenuHeader.shouldNotBe(Condition.visible);
-        headerElement.loginButton.shouldBe(Condition.visible).click();
+        headerElement.loginButton.shouldBe(Condition.visible)
+                .click();
 
         LoginHandle loginHandle = new LoginHandle();
         loginHandle.loginHandleContent.shouldBe(Condition.visible)
@@ -28,18 +30,19 @@ public class LoginTests extends BaseSetup {
                 .shouldHave(Condition.text("Войти"));
         loginHandle.emailInputlabel.shouldHave(Condition.text("Логин или E-mail"));
         loginHandle.passwordInputlabel.shouldHave(Condition.text("Пароль"));
+
         loginHandle.sendEmail(TESTER_EMAIL)
                 .sendPassword(TESTER_PASSWORD)
                 .clickSubmitButton();
 
         loginHandle.loginHandleContent.should(Condition.disappear);
         headerElement.personalAccountButton
-                .$(headerElement.buttonLabel).shouldHave(Condition.text(TESTER_NAME_AND_SURNAME)).click();
+                .$(headerElement.buttonLabel).shouldHave(Condition.text(TESTER_NAME_AND_SURNAME))
+                .click();
+
         headerElement.dropdownMenu.shouldBe(Condition.visible)
                 .$$(headerElement.dropdownListItem).shouldHave(CollectionCondition.size(7));
         headerElement.personalAccountMenuHeader.shouldBe(Condition.visible)
                 .$(headerElement.accountName).shouldHave(Condition.text(TESTER_NAME_AND_SURNAME));
-
-
     }
 }

@@ -51,7 +51,7 @@ public class BaseSetup {
 
     private void testerSetup() throws IOException {
         Properties properties = new Properties();
-        properties.loadFromXML(Files.newInputStream(Path.of("configuration/authorization.xml")));
+        properties.loadFromXML(Files.newInputStream(Path.of("src/test/resources/configuration/authorization.xml")));
         TESTER_EMAIL = properties.getProperty("testerEmail");
         TESTER_PASSWORD = properties.getProperty("password");
         TESTER_NAME_AND_SURNAME = properties.getProperty("nameAndSurname");

@@ -14,9 +14,9 @@ import work.mayflower.pages.plp.ProductListPage;
 import static com.codeborne.selenide.Selenide.open;
 
 public class CartTests extends BaseSetup {
-    //3. Проверка добавления товара в корзину и удаления из корзины (edited)
-    @Test(description = "Проверка добавления товара в корзину и удаления из корзины")
-    public void openPLPTest() {
+
+    @Test(description = "Check adding and removing a product from the cart")
+    public void addAndRemoveProductFromCartTest() {
         String productTitle = "Digma";
         new MainPage();
         open(SERVER + "catalog/" + productTitle.toLowerCase() + "/");

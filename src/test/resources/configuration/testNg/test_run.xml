@@ -11,6 +11,7 @@
     <test name="Cart and checkout tests">
         <classes>
             <class name="work.mayflower.tests.CartTests"/>
+            <class name="work.mayflower.tests.CheckoutTests"/>
         </classes>
     </test>
 </suite>

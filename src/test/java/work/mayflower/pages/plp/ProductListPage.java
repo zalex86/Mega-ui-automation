@@ -13,7 +13,7 @@ public class ProductListPage {
      String page_url = BaseSetup.SERVER + "catalog/";
 
      public final SelenideElement name = $("h1");
-     public final ElementsCollection foundItems = $$("div[class$='rs-offers-preview']");
+     public final ElementsCollection foundItems  = $$(".item-card");
 
      public ProductListPage(String productTitle) {
           PageObjectUtils.waitPageIsPresentByURL(page_url + productTitle.toLowerCase() +"/");

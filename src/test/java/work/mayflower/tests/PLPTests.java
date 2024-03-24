@@ -1,7 +1,7 @@
 package work.mayflower.tests;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
-import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 import work.mayflower.BaseSetup;
 import work.mayflower.pages.MainPage;
@@ -10,7 +10,7 @@ import work.mayflower.pages.plp.ItemCard;
 import work.mayflower.pages.plp.ProductListPage;
 
 public class PLPTests extends BaseSetup {
-    @Test(description = "Проверить переход и отображение товаров в каталоге")
+    @Test(description = "Check passing to a product list page and a product card view")
     public void openPLPTest() {
         String productTitle = "Digma";
         new MainPage();
@@ -19,11 +19,9 @@ public class PLPTests extends BaseSetup {
                 .hoverElectronicsItem()
                 .hoverPadsItem()
                 .clickDigmaLink();
-        SoftAssertions softAssertions = new SoftAssertions();
-        softAssertions.assertThat(productListPage.name.shouldBe(Condition.visible)
-                .getText()).isEqualTo(productTitle);
-        softAssertions.assertThat(productListPage.foundItems).size().isEqualTo(1);
-        softAssertions.assertAll();
+
+        productListPage.name.shouldBe(Condition.visible).shouldHave(Condition.text(productTitle));
+        productListPage.foundItems.shouldHave(CollectionCondition.sizeGreaterThanOrEqual(1));
         ItemCard itemCard = productListPage.getItemCard(1);
         itemCard.getItemCard().$(itemCard.itemNameWithLink).shouldBe(Condition.visible)
                 .shouldHave(Condition.text(productTitle))

@@ -3,9 +3,11 @@ package work.mayflower.pages.header;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import work.mayflower.BaseSetup;
+import work.mayflower.pages.OrdersListPage;
 
 import static com.codeborne.selenide.Selenide.$;
+import static work.mayflower.BaseSetup.TESTER_EMAIL;
+import static work.mayflower.BaseSetup.TESTER_PASSWORD;
 
 public class HeaderElement {
     public final SelenideElement hamburgerButton = $(".rs-catalog-show");
@@ -13,7 +15,7 @@ public class HeaderElement {
     public final By buttonLabel = By.cssSelector("span");
     public final SelenideElement dropdownMenu = $(".dropdown-menu");
     public final By dropdownListItem = By.cssSelector("li");
-    public final SelenideElement loginButton = $("a[href^=\"/auth\"]");
+    public final SelenideElement loginButton = $("a[href^='/auth']");
     public final SelenideElement personalAccountMenuHeader = $(".lk-dropdown__head");
     public final By accountName = By.cssSelector(".mb-3");
     public final SelenideElement cartButton = $("#rs-cart");
@@ -28,13 +30,17 @@ public class HeaderElement {
         return this;
     }
 
-    public void authorizeOnSite() {
+    public HeaderElement authorizeOnSite() {
         clickPersonalAccountButton()
                 .loginButton.click();
-        LoginHandle loginHandle = new LoginHandle();
-        loginHandle.emailInput.clear();
-        loginHandle.emailInput.sendKeys(BaseSetup.TESTER_EMAIL);
-        loginHandle.passwordInput.clear();
-        loginHandle.passwordInput.sendKeys(BaseSetup.TESTER_PASSWORD);
+        new LoginHandle().sendEmail(TESTER_EMAIL)
+                .sendPassword(TESTER_PASSWORD)
+                .clickSubmitButton();
+        return this;
+    }
+
+    public OrdersListPage passToOrdersListPage() {
+        clickPersonalAccountButton().dropdownMenu.$$(dropdownListItem).get(2).click();
+        return new OrdersListPage();
     }
 }

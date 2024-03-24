@@ -31,7 +31,7 @@ public class HamburgerElement {
 
     public ProductListPage clickDigmaLink() {
         digmaLink.shouldBe(Condition.visible).click();
-        return new ProductListPage();
+        return new ProductListPage("Digma");
     }
 
 

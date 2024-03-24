@@ -1,5 +1,6 @@
 package work.mayflower.pages.plp;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 
@@ -12,4 +13,8 @@ public class CartHandle {
     public final SelenideElement itemsAmount = $(".rs-amount");
     public final SelenideElement cartButton = $("#rs-cart-page .btn-primary");
 
+    public void cartButtonClick() {
+        cartButton.shouldBe(Condition.visible)
+                .click();
+    }
 }
