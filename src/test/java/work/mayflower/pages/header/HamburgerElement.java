@@ -3,7 +3,7 @@ package work.mayflower.pages.header;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import work.mayflower.pages.plp.ProductListPage;
+import work.mayflower.pages.productList.ProductListPage;
 
 import static com.codeborne.selenide.Selenide.$;
 

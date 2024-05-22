@@ -5,7 +5,7 @@
     <test name="Login and PLP tests">
         <classes>
             <class name="work.mayflower.tests.LoginTests"/>
-            <class name="work.mayflower.tests.PLPTests"/>
+            <class name="work.mayflower.tests.ProductListPageTests"/>
             <class name="work.mayflower.tests.CartTests"/>
         </classes>
     </test>

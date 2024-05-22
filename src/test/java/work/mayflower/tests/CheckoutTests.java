@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import work.mayflower.BaseSetup;
 import work.mayflower.pages.*;
 import work.mayflower.pages.header.HeaderElement;
-import work.mayflower.pages.plp.ProductListPage;
+import work.mayflower.pages.productList.ProductListPage;
 
 import static com.codeborne.selenide.Selenide.open;
 

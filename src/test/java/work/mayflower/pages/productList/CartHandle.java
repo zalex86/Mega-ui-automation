@@ -1,4 +1,4 @@
-package work.mayflower.pages.plp;
+package work.mayflower.pages.productList;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;

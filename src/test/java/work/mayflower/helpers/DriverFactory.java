@@ -11,12 +11,10 @@ import java.util.Map;
 import java.util.logging.Level;
 
 import static work.mayflower.BaseSetup.LOGGER;
-import static work.mayflower.BaseSetup.downloadFilepath;
 
 public final class DriverFactory {
 
     public static void setUpDriver() {
-//        Configuration.remote = ParametersProvider.getProperty("seleniumUrl");
         Configuration.browser = System.getProperty("gridBrowserName");
         System.setProperty("webdriver.chrome.driver", "src/test/resources/configuration/chromedriver-win64/chromedriver.exe");
         Configuration.startMaximized = true;
@@ -40,35 +38,25 @@ public final class DriverFactory {
     private static DesiredCapabilities getChromeCapabilities() {
         Map<String, Object> prefsMap = new HashMap<>();
         prefsMap.put("profile.default_content_settings.popups", 0);
-        prefsMap.put("download.default_directory", downloadFilepath);
         prefsMap.put("intl.accept_languages", "en, en_US");
 
         ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("prefs", prefsMap);
         options.addArguments("--test-type");
         options.addArguments("--disable-extensions");
-        options.addArguments("disable-infobars");
+        options.addArguments("--disable-infobars");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
-        //options.addArguments("--lang=ru-RU");
-        //Timed out receiving message from renderer
         options.addArguments("--disable-gpu");
         options.addArguments("--disable-password-manager");
-        options.addArguments("start-maximized");
-//        options.addArguments("--remote-allow-origins=*");
-//        WebDriverManager.chromedriver().setup();
+
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        //show browser window during tests
-//        capabilities.setCapability("enableVNC", true);
-        //enable video recording during tests
-//        capabilities.setCapability("enableVideo", false);
         capabilities.setCapability(ChromeOptions.CAPABILITY, options);
         return capabilities;
     }
 
     private static DesiredCapabilities getFireFoxCapabilities() {
         FirefoxProfile profile = new FirefoxProfile();
-        profile.setPreference("browser.download.dir", downloadFilepath);
         profile.setPreference("browser.download.folderList", 2);
         profile.setPreference("browser.download.useDownloadDir", true);
         profile.setPreference("browser.helperApps.neverAsk.saveToDisk",
@@ -79,20 +67,14 @@ public final class DriverFactory {
         options.setProfile(profile);
         options.addArguments("--test-type");
         options.addArguments("--disable-extensions");
-        options.addArguments("disable-infobars");
+        options.addArguments("--disable-infobars");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
-
         options.addArguments("--disable-gpu");
         options.addArguments("--disable-password-manager");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        //show browser window during tests
-        capabilities.setCapability("enableVNC", true);
-        //enable video recording during tests
-//        capabilities.setCapability("enableVideo", false);
         capabilities.setCapability(FirefoxOptions.FIREFOX_OPTIONS, options);
         return capabilities;
     }
-
 }

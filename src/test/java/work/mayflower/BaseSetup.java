@@ -19,7 +19,6 @@ import static com.codeborne.selenide.Selenide.open;
 public class BaseSetup {
     public static String SERVER;
     public static Logger LOGGER = Logger.getLogger("");
-    public static final String downloadFilepath = "D:\\Users\\AleksanDR\\Downloads\\";//"/tmp/";
     public static String TESTER_EMAIL;
     public static String TESTER_PASSWORD;
     public static String TESTER_NAME_AND_SURNAME;

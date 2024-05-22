@@ -8,9 +8,9 @@ import work.mayflower.BaseSetup;
 import work.mayflower.pages.CheckoutPage;
 import work.mayflower.pages.MainPage;
 import work.mayflower.pages.header.HeaderElement;
-import work.mayflower.pages.plp.CartHandle;
-import work.mayflower.pages.plp.ItemCard;
-import work.mayflower.pages.plp.ProductListPage;
+import work.mayflower.pages.productList.CartHandle;
+import work.mayflower.pages.productList.ItemCard;
+import work.mayflower.pages.productList.ProductListPage;
 
 import static com.codeborne.selenide.Selenide.open;
 

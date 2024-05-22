@@ -7,11 +7,11 @@ import org.testng.annotations.Test;
 import work.mayflower.BaseSetup;
 import work.mayflower.pages.MainPage;
 import work.mayflower.pages.header.HeaderElement;
-import work.mayflower.pages.plp.ItemCard;
-import work.mayflower.pages.plp.ProductListPage;
+import work.mayflower.pages.productList.ItemCard;
+import work.mayflower.pages.productList.ProductListPage;
 
 @Feature("PLP")
-public class PLPTests extends BaseSetup {
+public class ProductListPageTests extends BaseSetup {
     @Test(description = "Check passing to a product list page and a product card view")
     public void openPLPTest() {
         String productTitle = "Digma";
