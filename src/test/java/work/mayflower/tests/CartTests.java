@@ -20,8 +20,9 @@ public class CartTests extends BaseSetup {
     @Test(description = "Check adding and removing a product from the cart")
     public void addAndRemoveProductFromCartTest() {
         String productTitle = "Digma";
-        new MainPage();
+
         open(SERVER + "catalog/" + productTitle.toLowerCase() + "/");
+
         HeaderElement headerElement = new HeaderElement();
         headerElement.cartButton.click();
         CheckoutPage checkoutPage = new CheckoutPage();

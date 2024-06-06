@@ -5,7 +5,6 @@ import com.codeborne.selenide.Condition;
 import io.qameta.allure.Feature;
 import org.testng.annotations.Test;
 import work.mayflower.BaseSetup;
-import work.mayflower.pages.MainPage;
 import work.mayflower.pages.header.HeaderElement;
 import work.mayflower.pages.productList.ItemCard;
 import work.mayflower.pages.productList.ProductListPage;
@@ -15,7 +14,6 @@ public class ProductListPageTests extends BaseSetup {
     @Test(description = "Check passing to a product list page and a product card view")
     public void openPLPTest() {
         String productTitle = "Digma";
-        new MainPage();
         HeaderElement headerElement = new HeaderElement();
         ProductListPage productListPage = headerElement.clickHamburger()
                 .hoverElectronicsItem()

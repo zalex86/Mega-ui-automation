@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import work.mayflower.helpers.DriverFactory;
+import work.mayflower.pages.MainPage;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -36,6 +37,7 @@ public class BaseSetup {
                 .savePageSource(false)
                 .includeSelenideSteps(false));
         open(SERVER);
+        new MainPage();
     }
 
     @AfterMethod

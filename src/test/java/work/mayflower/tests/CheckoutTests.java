@@ -16,7 +16,6 @@ public class CheckoutTests extends BaseSetup {
     @Test(description = "Checkout with one product in cart by a logged in user")
     public void checkoutTest() {
         String productTitle = "Digma";
-        new MainPage();
         new CookiesHandle().acceptCookies();
         HeaderElement headerElement = new HeaderElement().authorizeOnSite();
         int orderNumber = headerElement.passToOrdersListPage()
